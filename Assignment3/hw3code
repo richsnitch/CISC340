@@ -1,0 +1,38 @@
+# Hayden Richards
+# CISC 340
+# Assignment 3
+# Problem 1
+
+lw $s1, 4($a0) # load a[1] into $s1
+addi $t0, $zero, 5 # t0 = 0 + 5
+beq $s1, $t0, else # if a[1]==5, jump to the else
+subi $v0, $s1, 2 # a[1] = a[1] - 2, leaving the result in the $v0 register
+j end # now jump to the end so we do not fall through the code
+else:
+  add $v0, $zero, $zero # a[1] = 0, leaving the result in the $v0 register
+  end: # where the code jumps to if the beq is false
+
+# Problem 2
+addi $v0, $zero, 2 # $v0 = 2
+addi $t0, $zero, 1 # set $t0 = 1
+bne $a0, $zero, while # if $a0 != 0, jump to the while loop
+addi $v0, $zero, 1 # set $v0 = 1
+j break # jump to the break label
+while:
+  beq $t0, $a0, break # if $t0 == $a0, jump to the label “break”
+  sll $v0, $v0, 1 # multiply by 2
+  addi $t0, $t0, 1 # add one to the count
+j while # jump back to the top of the loop
+break:
+  
+# Problem 3
+add $v0, $zero, $zero # $v0 = 0
+while:
+  beq $a0, $zero, end # if $a0 == 0, jump to the end
+  andi $t0, $a0, 1 # and $a0 and 1, leave it in $t0
+  beq $t0, $zero, not_one # if $t0 == 0, there is no one, jump to not_one
+  addi $v0, $v0, 1 # add 1 to $v0
+  not_one:
+srl $a0, $a0, 1 # shift the bits right 1 spot
+j while # jump back to the top
+end:
