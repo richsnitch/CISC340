@@ -1,0 +1,10 @@
+1. Translate the following program fragment into MIPS assembly. Assume that the base address of array a is in register $a0 when the program starts.
+
+if (a[1] == 5)
+   a[1] = 0;
+else
+   a[1] = a[1] - 2;
+   
+2. Write a sequence of assembly instructions that will calculate 2n for non-negative values of n. Assume that n is in $a0 when your program starts, and leave the result in $v0. Hint: Start with 1, and double it n times. For full credit, your code should work correctly when n is zero.
+
+3. Write a sequence of assembly instructions that will calculate the number of 1 bits in the binary representation of an integer. For example, the result should be 5 for an input of 199, since the binary representation of 199 (11000111) contains 5 ones. Assume that the integer in question is in $a0 when the program starts, and leave the result in $v0. Hint: Use and to inspect the least-significant (rightmost) bit, then shift and repeat.
