@@ -1,0 +1,38 @@
+# Hayden Richards
+# CISC 340
+# Assignment 2
+
+1. addi $s0, $s0, 1 # a = a + 1
+  
+2. sub $s2, $s2, $s3 # c = c - d
+sub $s0, $s1, $s2 # a = b - c
+
+3. addi $t0, $zero, 1 # add the constant “1” to a temp register
+sub $s0, $t0, $s0 # a = 1 - a
+  
+4. add $t0, $s1, $s2 # t0 = b + c
+add $s0, $t0, $t0 # a = 2 (b + c)
+
+5. sll $s0, $s1, 4 # a = b*2^4 (a = b *16), shifting the bits left 4 times
+sub $s0, $s0, $s1 # a = 15 * b, since we essentially did 16b and we want it to be 15b,
+subtract one b
+
+6. addi $t0, $s0, 2 # t0 = a + 2
+add $t1, $s1, $s1 # t1 = 2b
+sub $s0, $t1, $t0 # a = 2b - a + 2 (a = t1 - t0)
+
+7. lw $t0, 0($s0) # load first index of the array into t0
+lw $t1, 4($s0) # load second index of the array into t1
+lw $t2, 8($s0) # load third index of the array into t2
+add $s1, $t0, $t1 # s1 = array[0] + array[1]
+add $s1, $s1, $t2 # s1 = s1 + array[2]
+
+8. lw $t0, 0($s0) # load first index of the array into t0
+lw $t1, 4($s0) # load second index of the array into t1
+lw $t2, 8($s0) # load third index of the array into t2
+add $t0, $t0, $t0 # array[0] = 2 * array[0]
+add $t1, $t1, $t1 # array[1] = 2 * array[1]
+add $t2, $t2, $t2 # array[2] = 2 * array[2]
+sw $t0, 0($s0) # store 2*array[0] into its respective memory address
+sw $t1, 4($s0) # store 2*array[1] into its respective memory address
+sw $t2, 8($s0) # store 2*array[2 into its respective memory address
